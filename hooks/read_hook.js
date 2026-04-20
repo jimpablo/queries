@@ -7,7 +7,10 @@ async function main() {
 
   // readPath is the path to the file that Claude is trying to read
   const readPath =
-    toolArgs.tool_input?.file_path || toolArgs.tool_input?.path || "";
+    toolArgs.tool_input?.file_path ||
+    toolArgs.tool_input?.path ||
+    toolArgs.tool_input?.glob ||
+    "";
 
   // TODO: ensure Claude isn't trying to read the .env file
   if (readPath.includes(".env")) {
